@@ -1,16 +1,15 @@
 function getRandom() {
-    return Math.random();
+    return Math.floor(Math.random()*10+1);
 }
 
 function gameProcess () {
-    let random = Math.floor(getRandom()*10+1);
-    number = +prompt('Угадайте число от 1 до 10',);
+    let random = getRandom();
+    number = prompt('Угадайте число от 1 до 10', '0');
     if (isNaN(number)) {
         console.log('введите число');
     }
-    else if (number == false) {
+    else if (number === false) {
         console.log('Игра окончена');
-        break;
     }
     else if (number === random) {
         console.log('Вы угадали');
@@ -18,10 +17,11 @@ function gameProcess () {
     else if (number) {
         console.log('Вы не угадали');
     }
+    return number;
 }
 
 function run () {
-    let number = 1;
+    number = 1;
     while (number !== false) {
         gameProcess ();
     }
