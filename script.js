@@ -1,48 +1,47 @@
+function pow(n, p) {
+    let value = n;
+    if (p === 0){
+        return 1;
+    }
+    for (let i = 1; i < p; i++) {
+        n *= value;
+    }
+    return n;
+}
+
+
 function getRandom() {
     return Math.floor(Math.random()*10+1);
 }
 
 function gameProcess () {
     let random = getRandom();
-    number = prompt('Угадайте число от 1 до 10', '0');
-    if (isNaN(number)) {
-        console.log('введите число');
-    }
-    else if (number === false) {
-        console.log('Игра окончена');
-    }
-    else if (number === random) {
-        console.log('Вы угадали');
-    }
-    else if (number) {
-        console.log('Вы не угадали');
-    }
-    return number;
-}
+    let res = prompt('Угадайте число от 1 до 10', '0');
 
+    if (res === null) {
+        console.log('Игра окончена');
+        return null;
+    } else {
+        if (isNaN(res) || res === '') {
+            console.log('введите число');
+            return true;
+        }
+        else if (+res === random) {
+            console.log('Вы угадали');
+            return true;
+        }
+        else {
+            console.log('Вы не угадали', random);
+            return true;
+        }
+    }
+    
+}
 function run () {
-    number = 1;
-    while (number !== false) {
-        gameProcess ();
+    let number = 1;
+    while (number !== null) {
+        number = gameProcess ();
     }
 }
 
 run ();
-
-//     while (number !== false) {
-//     let random = Math.floor(getRandom()*10+1);
-//     number = +prompt('Угадайте число от 1 до 10', '0');
-//     if (isNaN(number)) {
-//         console.log('введите число');
-//     }
-//     else if (number == false) {
-//         console.log('Игра окончена');
-//         break;
-//     }
-//     else if (number === random) {
-//         console.log('Вы угадали');
-//     }
-//     else if (number) {
-//         console.log('Вы не угадали');
-//     }
-// }
